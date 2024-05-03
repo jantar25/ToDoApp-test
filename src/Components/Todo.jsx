@@ -22,13 +22,14 @@ const Todo = ({todo}) => {
   }
 
   const editTodo = () => {
+    if (todo.completed) return
     dispatch(updateTodoStart())
     try {
       dispatch(updateTodoSuccess({
         id: todo.id,
         updatedTodo: {
           ...todo,
-          completed: !todo.completed
+          completed: true
         }
       }))
     } catch (error) {
