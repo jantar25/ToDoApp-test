@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
+import trashIcon from '../Assets/Icons/trash.svg'
 import { updateTodoStart,updateTodoSuccess,updateReviewFailure,
     deleteTodoStart,deleteTodoSuccess,deleteReviewFailure } from '../Redux/todoRedux'
 
@@ -42,11 +43,20 @@ const Todo = ({todo}) => {
   return (
     <div>
       <div className='flex items-center justify-between border-b border-red-color py-4'>
-        <h1 className='text-lg font-bold'>{todo.title}</h1>
-        <div className='flex gap-4'>
-          <button className='bg-red-color text-main-color px-4 py-2 rounded-lg' onClick={editTodo}>Edit</button>
-          <button className='bg-red-color text-main-color px-4 py-2 rounded-lg' onClick={deleteTodo}>Delete</button>
-        </div>
+        <label htmlFor={todo.id} className="flex items-center justify-start gap-2 cursor-pointer">
+          <input
+            id={todo.id}
+            type="checkbox"
+            className="h-6 w-6 mr-4 accent-main-color"
+            checked={todo.completed}
+            onChange={editTodo}
+          />
+          <h1 className='text-lg font-bold'>{todo.title}</h1>
+          <p className={`text-xs px-2 py-1 font-bold rounded-full ${todo.completed? 'bg-green-400' : 'bg-yellow-400'}`}>
+            {todo.completed? 'completed' : 'pending'}
+          </p>
+        </label>
+        <img src={trashIcon} alt='delete' className='h-6 w-6 cursor-pointer' onClick={deleteTodo} />
       </div>
     </div>
   )

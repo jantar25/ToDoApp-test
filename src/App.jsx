@@ -8,7 +8,7 @@ const App = () => {
     <>
       <div>
         <Navbar />
-        <div className='min-h-[80vh] px-4 md:px-8 lg:px-32 bg-white'>
+        <div className='h-[80vh] px-4 md:px-8 lg:px-32 bg-white overflow-y-auto'>
           <Outlet />
         </div>
         <Footer />
