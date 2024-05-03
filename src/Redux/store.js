@@ -11,7 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist'
 
-import currentUserRedux from './currentUserRedux'
+import todoRedux from './todoRedux'
 
 const persistConfig = {
   key: 'root',
@@ -19,7 +19,7 @@ const persistConfig = {
   storage,
 }
 
-const rootReducer = combineReducers({ currentUser:currentUserRedux })
+const rootReducer = combineReducers({ todoList:todoRedux })
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({

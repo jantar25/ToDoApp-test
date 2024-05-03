@@ -4,12 +4,11 @@ import Footer from "./Components/Footer"
 import Navbar from "./Components/Navbar"
 
 const App = () => {
-
   return (
     <>
-      <div className='px-4 md:px-8 lg:px-32 bg-white text-main'>
+      <div>
         <Navbar />
-        <div className='min-h-[50vh]'>
+        <div className='min-h-[80vh] px-4 md:px-8 lg:px-32 bg-white'>
           <Outlet />
         </div>
         <Footer />
