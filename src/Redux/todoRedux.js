@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const currentUserSlice = createSlice({
+const todoSlice = createSlice({
   name:'todoList',
   initialState:{
     todoList: [],
@@ -28,7 +28,7 @@ const currentUserSlice = createSlice({
     },
     postTodoSuccess:(state,action) => {
       state.isFetching=false
-      state.todoList= state.todoList.push(action.payload)
+      state.todoList.push(action.payload)
       state.error=null
     },
     postToDoFailure:(state,error) => {
@@ -43,7 +43,10 @@ const currentUserSlice = createSlice({
     },
     updateTodoSuccess:(state,action) => {
       state.isFetching=false
-      state.todoList[state.todoList.findIndex((item) => item.id === action.payload.id)] = action.payload.updatedTodo
+      const index = state.todoList.findIndex(item => item.id === action.payload.id)
+      if (index !== -1) {
+        state.todoList[index] = action.payload.updatedTodo
+      }
       state.error=null
     },
     updateReviewFailure:(state,error) => {
@@ -58,7 +61,10 @@ const currentUserSlice = createSlice({
     },
     deleteTodoSuccess:(state,action) => {
       state.isFetching=false
-      state.todoList[state.todoList.findIndex((item) => item.id === action.payload.id)] = action.payload.updatedTodo
+      const index = state.todoList.findIndex(item => item.id === action.payload.id)
+      if (index !== -1) {
+        state.todoList.splice(index, 1)
+      }
       state.error=null
     },
     deleteReviewFailure:(state,error) => {
@@ -69,6 +75,6 @@ const currentUserSlice = createSlice({
   }
 })
 
-export const { userLoginStart,userLoginSuccess,userLoginFailure,userLogoutSuccess,updateUserProfileStart,
-  updateUserProfileSuccess,updateUserProfileFailure } = currentUserSlice.actions
-export default currentUserSlice.reducer
+export const { postTodoStart,postTodoSuccess,postToDoFailure,updateTodoStart,updateTodoSuccess,updateReviewFailure,
+  deleteTodoStart,deleteTodoSuccess,deleteReviewFailure } = todoSlice.actions
+export default todoSlice.reducer
