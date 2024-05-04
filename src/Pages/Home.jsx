@@ -12,7 +12,8 @@ const Home = () => {
 
   return (
     <div className='flex flex-col items-center'>
-      <div className={`flex items-center justify-center my-4 px-8 py-4 gap-4 border rounded-2xl ${completionPercentage >= 80? 'border-green-600' : 'border-red-color'}`}>
+      <div className={`flex items-center justify-center my-4 px-8 py-4 gap-4 border rounded-2xl min-w-[350px]
+        ${completionPercentage >= 80? 'border-green-600' : 'border-red-color'}`}>
         <div className="flex flex-col items-start">
           <h1 className="text-main-color text-2xl font-bold text-center">Tasks Done</h1>
           <p className="text-gray-color text-lg text-center">Keep It Up</p>
@@ -23,10 +24,13 @@ const Home = () => {
         </div>
       </div>
       <ToDoForm />
-      <div className="h-[50vh] w-full lg:w-1/2 my-4 overflow-y-auto">
-        {todoList.slice().reverse().map((todo) => (
-          <Todo key={todo.id} todo={todo} />
-        ))}
+      <div className="h-[40vh] w-full lg:w-1/2 my-4 overflow-y-auto">
+        {todoList.length !== 0 ? 
+          todoList.slice().reverse().map((todo) => (
+            <Todo key={todo.id} todo={todo} />
+          )):
+          <p className='text-center text-gray-color'>No todos</p>
+        }
       </div>
     </div>
   )

@@ -38,7 +38,7 @@ const ToDoForm = () => {
     <form className='flex items-center gap-2' onSubmit={handleSubmitTodo}>
         <input
           type="text"
-          className="border border-main-color rounded-lg px-4 py-2 my-4"
+          className="min-w-[300px] border border-main-color rounded-lg px-4 py-2 my-4"
           placeholder="Add a new todo"
           value={todo}
           maxLength={50}
@@ -46,7 +46,7 @@ const ToDoForm = () => {
         />
         <button
           type="submit"
-          className="h-12 w-12 flex items-center justify-center bg-main-color font-bold rounded-full hover:bg-main-hover"
+          className="h-12 w-12 flex items-center justify-center bg-main-color font-bold rounded-full hover:bg-main-color-hover"
         >
           <img src={plusIcon} alt='add' className='h-6 w-6' />
         </button>

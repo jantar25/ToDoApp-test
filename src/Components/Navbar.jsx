@@ -32,7 +32,7 @@ const Navbar = () => {
         <div data-testid='mobile-menu' className='absolute top-[10vh] left-0 right-0 lg:hidden flex flex-col items-center justify-between
          bg-main-color p-4' ref={ dropDownMenuRef }>
           {Navigations.map((navigation, index) => (
-            <NavLink key={index} to={navigation.path} className={({ isActive }) => isActive? navLinkActive : ''}>
+            <NavLink key={index} to={navigation.path} className={({ isActive }) => isActive? navLinkActive : ''} onClick={closeMenu}>
               <span className='text-xl font-semibold mx-2'>{navigation.title}</span>
             </NavLink>
           ))}
